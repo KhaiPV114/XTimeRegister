@@ -155,7 +155,7 @@
 
 
     <!-- ======= Product Section ======= -->
-    <section id="pricing" class="pricing pt-0">
+    <section id="pricing" class="pricing pt-0" style="padding-bottom: 10px;">
       <div class="container" data-aos="fade-up">
 
         <%
@@ -246,7 +246,7 @@
 
 
     <!-- ======= Application Section ======= -->
-    <section id="service" class="services pt-0">
+    <section id="service" class="services p-0">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -301,7 +301,7 @@
 
 
     <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
+    <section id="faq" class="faq p-2">
       <div class="container" data-aos="fade-up">
         <%
             set rsArticle = CreateObject("ADODB.recordset")

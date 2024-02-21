@@ -111,14 +111,18 @@
                     itemTitle = rsItem("itemTitle")
                     itemDescribe = rsItem("itemDescribe")
                     itemPicture = rsItem("pictureUrl")
+                    price = rsItem("price")
+                    priceUnit = rsItem("priceUnit")
             %>
           <div class="col-lg-4 data-aos="fade-up" data-aos-delay="100">
             <div class="pricing-item">
               <div>
                 <img src="<%=itemPicture%>" alt="<%=itemName%>" class="img-fluid">
               </div>
-              <h3><%=itemTitle%></h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
+              <div class=" text-center">
+                <h3><%=itemTitle%></h3>
+                <h5 class="text-danger"><%=price%><sup><%=priceUnit%></sup></h5>
+              </div>
               <p><%=itemBody%></p>
               <a href="#" class="buy-btn">Đăng kí</a>
               <a href="#" class="buy-btn">Chi tiết</a>

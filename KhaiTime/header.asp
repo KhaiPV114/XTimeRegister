@@ -54,7 +54,7 @@
       
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top p-0">
+  <header id="header" class="header d-flex align-items-center fixed-top p-0" style="height: 100px;">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between" style="height:80px">
 
           
@@ -69,10 +69,10 @@
     %>
 
   <title><%=name%></title>
-      <a href="index.html" class="logo d-flex align-items-center" style="height: 60px">
+      <a href="index.html" class="logo d-flex align-items-center" style="height: 100px">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img style="height: 60px" src="<%=picture%>" width="100px" height="60px" alt="logo"/>
+        <img style="width: 150px; height: 100px" src="<%=picture%>" alt="logo"/>
       </a>
 
       <%
