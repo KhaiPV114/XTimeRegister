@@ -67,9 +67,9 @@
         <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center ms-5">
           <%
           set rsArticle = CreateObject("ADODB.recordset")
-              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId where ca.categoryID = 1"
-              rsArticle.open sql, conn
-              Do Until rsArticle.eof
+            sql = "select * from Article "
+            rsArticle.open sql, conn
+            Do Until rsArticle.eof
               articleId = rsArticle("articleId")
               articleTitle = rsArticle("articleTitle")
               articleBody = rsArticle("articleBody")
@@ -127,85 +127,14 @@
 
   <main id="main">
 
-    <!-- Video Action Section -->
-    <section>
-        <div class="container">
-          <div class="row gy-4">
-            <%
-                set rsVideo = CreateObject("ADODB.recordset")
-              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 1"
-                  rsVideo.open sql, conn
-                    articleId = rsVideo("articleId")
-                    articleTitle = rsVideo("articleTitle")
-                    articleBody = rsVideo("articleBody")
-                    interface = rsVideo("interface")
-              %>
-                <div class="section-header">
-                    <span><%=articleTitle%></span>
-                    <h2><%=articleTitle%></h2>
-                </div>
-              <div class="video-action d-flex justify-content-center w-px">
-                <%=articleBody%>
-              </div>
-              <%=rsVideo.close%>
-          </div>
-        </div>
-    </section>
-
-    <!-- ======= Customer Reaction Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container">
-
-
-        <%
-                set rsArticle = CreateObject("ADODB.recordset")
-              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 3 and ca.categoryID = 1"
-                  rsArticle.open sql, conn
-                    articleId = rsArticle("articleId")
-                    articleTitle = rsArticle("articleTitle")
-                    articleBody = rsArticle("articleBody")
-                    interface = rsArticle("interface")
-        %>
-        <div class="row gy-4">
-          <div class="section-header">
-            <span><%=articleTitle%></span>
-            <h2><%=articleBody%></h2>
-          </div>  
-              <%
-                set rsItem = CreateObject("ADODB.recordset")
-                  sql = "select * from Article_Items where articleId = " & articleId
-                  rsItem.open sql, conn
-                  Do Until rsItem.eof
-                    itembody = rsItem("itemBody")
-                    pictureUrl = rsItem("pictureUrl")
-                    itemTitle = rsItem("itemTitle")
-                %>
-              <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up">
-                <div class="icon flex-shrink-0 d-flex justify-content-center "><img class="border border-secondary rounded mb-3" width="150px" height="150px" src="<%=pictureUrl%>"/></div>
-                <div>
-                  <h4 class="title"><%=itemTitle%></h4>
-                  <p class="description"><%=itemBody%></p>
-                </div>
-              </div>
-              <%
-                rsItem.movenext
-                Loop
-                rsItem.close
-              %>
-          <!-- End Service Item -->
-        </div>
-      </div>
-    </section><!-- End Featured Services Section -->
-
-
     <!-- ======= Why Action Section ======= -->
-    <section id="call-to-action" class="call-to-action">
+    <section id="call-to-action" class="call-to-action mt-3">
       <div class="container" data-aos="zoom-out">
 
         <div class="row justify-content-center">
           <%
             set rsArticle = CreateObject("ADODB.recordset")
-              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 1"
+                  sql = "select * from Article where interface = 4"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -231,7 +160,7 @@
 
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 5 and ca.categoryID = 1"
+                  sql = "select * from Article where interface = 5"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -255,14 +184,18 @@
                     itemTitle = rsItem("itemTitle")
                     itemDescribe = rsItem("itemDescribe")
                     itemPicture = rsItem("pictureUrl")
+                    price = rsItem("price")
+                    priceUnit = rsItem("priceUnit")
             %>
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing-item">
               <div>
                 <img src="<%=itemPicture%>" alt="<%=itemName%>" class="img-fluid">
               </div>
-              <h3><%=itemTitle%></h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
+              <div class=" text-center">
+                <h3><%=itemTitle%></h3>
+                <h5 class="text-danger"><%=price%><sup><%=priceUnit%></sup></h5>
+              </div>
               <p><%=itemBody%></p>
               <a href="#" class="buy-btn">Đăng kí</a>
               <a href="#" class="buy-btn">Chi tiết</a>
@@ -274,10 +207,41 @@
             rsItem.close
             rsArticle.close
           %>
-
-         
         </div>
       </div>
+            </div>
+      <div style="background-color: #0e1d34;" class="my-3 d-flex justify-content-center">
+        <div class="p-5 w-75 align-middle text-center">
+          <%
+            set rsArticle = CreateObject("ADODB.recordset")
+            sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 6 and ca.categoryID = 1 and a.articleId = 8"
+            rsArticle.open sql, conn
+              Do Until rsArticle.EOF
+                articleTitle = rsArticle("articleTitle")
+                articleBody = rsArticle("articleBody")
+                %>
+                  <h3 class="text-light"><%=articleBody%></h3>
+                <%
+                rsArticle.movenext
+                Loop
+                rsArticle.close
+              %>
+              <%
+                set rsArticle = CreateObject("ADODB.recordset")
+                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 6 and ca.categoryID = 1 and a.articleId = 9"
+                rsArticle.open sql, conn
+                  Do Until rsArticle.EOF
+                    articleTitle = rsArticle("articleTitle")
+                    articleBody = rsArticle("articleBody")
+                    %>
+                      <h2 class="text-light"><%=articleBody%></h2>
+                    <%
+                    rsArticle.movenext
+                    Loop
+                    rsArticle.close
+                %>
+            </div>
+      </div>  
     </section><!-- End Product Section -->
 
 
@@ -294,7 +258,7 @@
         <div class="row gy-4">
           <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 7 and ca.categoryID = 1"
+                  sql = "select * from Article where interface = 7"
                   rsArticle.open sql, conn
                   Do Until rsArticle.eof
                     articleId = rsArticle("articleId")
@@ -341,7 +305,7 @@
       <div class="container" data-aos="fade-up">
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 8 and ca.categoryID = 1"
+                  sql = "select * from Article where interface = 8"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
