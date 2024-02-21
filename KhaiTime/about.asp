@@ -66,7 +66,7 @@
           <div class="row d-flex justify-content-center">
               <%
                     set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 9"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 1 and ca.categoryID = 2"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")
@@ -162,7 +162,7 @@
       <div class="container" data-aos="fade-up">
           <%
                     set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 10"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 2"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")
@@ -214,7 +214,7 @@
           <div class="row gy-4">
             <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 11"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 3 and ca.categoryID = 2"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")
@@ -270,7 +270,7 @@
             <div class="text-center p-3">
               <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 12"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 4 and ca.categoryID = 2"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")

@@ -67,9 +67,9 @@
         <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center ms-5">
           <%
           set rsArticle = CreateObject("ADODB.recordset")
-            sql = "select * from Article "
-            rsArticle.open sql, conn
-            Do Until rsArticle.eof
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId where ca.categoryID = 1"
+              rsArticle.open sql, conn
+              Do Until rsArticle.eof
               articleId = rsArticle("articleId")
               articleTitle = rsArticle("articleTitle")
               articleBody = rsArticle("articleBody")
@@ -133,7 +133,7 @@
           <div class="row gy-4">
             <%
                 set rsVideo = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where articleId = 4"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 1"
                   rsVideo.open sql, conn
                     articleId = rsVideo("articleId")
                     articleTitle = rsVideo("articleTitle")
@@ -159,7 +159,7 @@
 
         <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where articleId = 5"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 3 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -205,7 +205,7 @@
         <div class="row justify-content-center">
           <%
             set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 4"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -231,7 +231,7 @@
 
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 5"
+                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 5 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -256,7 +256,7 @@
                     itemDescribe = rsItem("itemDescribe")
                     itemPicture = rsItem("pictureUrl")
             %>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing-item">
               <div>
                 <img src="<%=itemPicture%>" alt="<%=itemName%>" class="img-fluid">
@@ -274,6 +274,8 @@
             rsItem.close
             rsArticle.close
           %>
+
+         
         </div>
       </div>
     </section><!-- End Product Section -->
@@ -292,7 +294,7 @@
         <div class="row gy-4">
           <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 7"
+                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 7 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                   Do Until rsArticle.eof
                     articleId = rsArticle("articleId")
@@ -339,7 +341,7 @@
       <div class="container" data-aos="fade-up">
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 8"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 8 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")

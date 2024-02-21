@@ -66,7 +66,7 @@
           <div class="row d-flex justify-content-center">
             <%
                     set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 13"
+                    sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 1 and ca.categoryID = 4"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")
@@ -99,7 +99,7 @@
           
         <%
                     set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article where interface = 14"
+                    sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 2 and ca.categoryID = 4"
                     rsArticle.open sql, conn
                       articleId = rsArticle("articleId")
                       articleTitle = rsArticle("articleTitle")
@@ -116,7 +116,7 @@
         <div class="row gy-4">
           <%
                 set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 7"
+              sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 7 and ca.categoryID = 1"
                   rsArticle.open sql, conn
                   Do Until rsArticle.eof
                     articleId = rsArticle("articleId")
