@@ -87,7 +87,7 @@
 
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-                    sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 1 and ca.categoryID = 3"
+                    sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 5 and ca.categoryID = 1"
                     rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
