@@ -62,7 +62,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg'); padding-top: 80px">
+      <div class="page-header d-flex align-items-center" style="background-image: url('./image/Website\ 2.png'); padding-top: 80px">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
               <%

@@ -81,7 +81,9 @@
           %>
           <%If (articleId = 1) Then%>
           <h2 data-aos="fade-up"><%=articleTitle%></h2>
-          <p data-aos="fade-up" data-aos-delay="100"><%=articleBody%></p>
+          <div class="mb-5">
+            <h4 data-aos="fade-up" data-aos-delay="100" ><%=articleBody%><h4/>
+          </div>
           <%
           End If%>
 
@@ -209,8 +211,8 @@
           %>
         </div>
       </div>
-            </div>
-      <div style="background-color: #0e1d34;" class="my-3 d-flex justify-content-center">
+    </div >
+      <div style="background-image: url('./image/Website\ 4.png')" class="my-3 d-flex justify-content-center">
         <div class="p-5 w-75 align-middle text-center">
           <%
             set rsArticle = CreateObject("ADODB.recordset")
@@ -305,7 +307,7 @@
       <div class="container" data-aos="fade-up">
         <%
             set rsArticle = CreateObject("ADODB.recordset")
-                  sql = "select * from Article where interface = 8"
+                sql = "select * from Article a join Category_Article ca on a.articleId = ca.articleId  where a.interface = 8 and ca.categoryID = 1 and a.articleId = 16"
                   rsArticle.open sql, conn
                     articleId = rsArticle("articleId")
                     articleTitle = rsArticle("articleTitle")
@@ -315,27 +317,43 @@
         <div class="section-header">
           <span><%=articleTitle%></span>
           <h2><%=articleBody%></h2>
-
         </div>
 
+        <%rsArticle.close%>
+        
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-10">
 
             <div class="accordion accordion-flush" id="faqlist">
 
+              <%
+                set rsItem = CreateObject("ADODB.recordset")
+                  sql = "select * from Article_Items where articleId = 16" 
+                  rsItem.open sql, conn
+                  Do Until rsItem.eof
+                    itemBody = rsItem("itemBody")
+                    itemTitle = rsItem("itemTitle")
+                    itemDescribe = rsItem("itemDescribe")
+              %>
               <div class="accordion-item">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Non consectetur a erat nam at lectus urna duis?
-                  </button>
-                </h3>
+                        <%=itemTitle%>
+                    </button>
+                  </h3>
                 <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                   <div class="accordion-body">
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    <%=itemBody%>
                   </div>
                 </div>
               </div><!-- # Faq item-->
+
+              <%
+                rsItem.movenext
+                loop
+                rsItem.close
+              %>
 
               <div class="accordion-item">
                 <h3 class="accordion-header">
