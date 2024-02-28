@@ -140,7 +140,7 @@ section {
 
 .breadcrumbs .page-header:before {
   content: "";
-  background-color: rgba(14, 29, 52, 0.8);
+  background-color: rgb(46 54 65 / 80%);
   position: absolute;
   inset: 0;
 }
@@ -295,7 +295,7 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 80px;
   margin-right: 6px;
 }
 
